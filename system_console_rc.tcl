@@ -9,3 +9,8 @@
 # perform commands they would want to set up their System Console environment.
 #
 # Please edit this script to your preference.
+
+# Add path to packages
+
+global env auto_path
+lappend auto_path [file join $env(HOME) system_console lib]
