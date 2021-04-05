@@ -1,0 +1,50 @@
+#+title: Tcl package library for Intel Quartus Prime System Console.
+#+author: Yuriy Gritsenko
+#+link: https://github.com/yuravg/system_console
+
+The System Console performs low-level hardware debugging of FPGA systems.
+
+* Contents
+
+** Package library
+
+=lib= - directory with Tcl packages
+- sc_service - System Console Service: Console Commands
+- sc_avalonmm - System Console Service: Avalon-MM Commands
+
+** Configuration file
+
+=system_console_rc.tcl= - System Console user configuration file
+
+* Installation
+
+Installing =system_console= packages for the System Console
+- Download =system_console=: =git clone https://github.com/yuravg/system_console.git= or [[https://github.com/yuravg/system_console/archive/master.zip][zip-file]]
+- Copy =system_console= directory to your Home ($HOME) directory
+
+* Usage
+
+#+begin_src tcl
+# Load package
+package require sc_avalonmm
+namespace import sc_avalonmm::*
+
+# Select System Console service path (service <index>, <type_name>)
+set_service_path 0 "master"
+
+# Write, read (to/from selected above service with <index>, <type_name>)
+# the service will be automatically opened before reading or writing
+write32 0x00 0x12345678
+write8  0x10 0xab 0xcd 0xef
+
+puts "read16: [read16  0x0 100]"
+
+# Closes the service type (selected above service with <index>, <type_name>)
+close_service_path
+#+end_src
+
+* Links
+
+- [[https://www.intel.co.jp/content/dam/altera-www/global/ja_JP/pdfs/literature/ug/ug_system_console.pdf][System Console User Guide]]
+- [[https://www.intel.com/content/dam/www/programmable/us/en/pdfs/literature/ug/ug_system_console.pdf][Analyzingand DebuggingDesignswithSystemConsole]]
+- [[https://www.intel.com/content/www/us/en/programmable/documentation/ulf1486971260167.html][ASMI Parallel II Intel FPGA IP User Guide]]
