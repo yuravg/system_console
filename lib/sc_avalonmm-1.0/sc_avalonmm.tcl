@@ -10,6 +10,8 @@ package require sc_service
 
 namespace eval sc_avalonmm {
 
+    create_sc_service
+
     variable service_path
 
     namespace export       \
