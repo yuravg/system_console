@@ -9,12 +9,12 @@ The System Console performs low-level hardware debugging of FPGA systems.
 ** Package library
 
 =lib= - directory with Tcl packages
-- sc_service - System Console Service: Console Commands
-- sc_avalonmm - System Console Service: Avalon-MM Commands
+- [[file:lib/sc_service-1.0/sc_service.tcl][sc_service]] - System Console Service: Console Commands
+- [[file:lib/sc_avalonmm-1.0/sc_avalonmm.tcl][sc_avalonmm]] - System Console Service: Avalon-MM Commands
 
 ** Configuration file
 
-=system_console_rc.tcl= - System Console user configuration file
+[[file:system_console_rc.tcl][system_console_rc.tcl]] - System Console user configuration file
 
 * Installation
 
@@ -23,6 +23,8 @@ Installing =system_console= packages for the System Console
 - Copy =system_console= directory to your Home ($HOME) directory
 
 * Usage
+
+An example of using *system_console* packages in a your System Console script
 
 #+begin_src tcl
 # Load package
