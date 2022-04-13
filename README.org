@@ -4,6 +4,39 @@
 
 The System Console performs low-level hardware debugging of FPGA systems.
 
+* About
+
+This library allows you to reduce the amount of code required to get started with the Intel
+Quartus Prime System Console.
+
+use:
+#+begin_src tcl
+package require sc_avalonmm
+namespace import sc_avalonmm::*
+
+set_service_path 0 "master"
+
+write32 0x00 0x1234abcd
+read32 0x00 10
+#+end_src
+
+instead of:
+#+begin_src tcl
+set mp [lindex [get_service_paths master] 0]
+
+proc write_memory {addr data} {
+    global mp
+    master_write_32 $mp $addr $data
+}
+proc read_memory {addr bytes_size} {
+    global mp
+    master_read_32 $mp $addr $bytes_size
+}
+
+write_memory 0x00 0x1234abcd
+read_memory 0x00 10
+#+end_src
+
 * Contents
 
 ** Package library
